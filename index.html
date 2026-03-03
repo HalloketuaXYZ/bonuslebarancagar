@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BONUS LEBARAN - Spesial Idul Fitri 1447 H</title>
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;600;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        /* CSS Variables - Premium Emerald & Gold Theme */
+        :root {
+            --color-bg-deep: #021a12;
+            --color-primary: #052e20;
+            --color-primary-light: #0f5132;
+            --color-gold: #fbbf24;
+            --color-gold-light: #fef08a;
+            --color-gold-dark: #b45309;
+            --color-white: #ffffff;
+            --color-text-dim: #d1d5db;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+
+            --shadow-gold: 0 0 20px rgba(251, 191, 36, 0.5);
+            --shadow-green: 0 0 30px rgba(15, 81, 50, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-deep);
+            color: var(--color-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* =========================================
+           BACKGROUND ANIMATIONS & DECORATIONS
+           ========================================= */
+        .background-decorations {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 10%, rgba(20, 83, 45, 0.4) 0%, var(--color-bg-deep) 70%);
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 0;
+            animation: drift 15s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--color-primary-light);
+            top: -50px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 250px;
+            height: 250px;
+            background: rgba(251, 191, 36, 0.2);
+            bottom: 50px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(50px, 50px) scale(1.1);
+            }
+        }
+
+        .moon {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            width: 15vh;
+            height: 15vh;
+            border-radius: 50%;
+            box-shadow: inset -25px 5px 0 0 rgba(251, 191, 36, 0.15);
+            /* Subtle crescent */
+            transform: rotate(-15deg);
+            opacity: 0.8;
+        }
+
+        .star {
+            position: absolute;
+            color: rgba(254, 240, 138, 0.5);
+            font-size: 1.5rem;
+            animation: twinkle 3s infinite alternate ease-in-out;
+        }
+
+        .star-1 {
+            top: 12%;
+            left: 15%;
+            animation-delay: 0s;
+            font-size: 1rem;
+        }
+
+        .star-2 {
+            top: 40%;
+            left: 8%;
+            animation-delay: 1.2s;
+            font-size: 0.8rem;
+        }
+
+        .star-3 {
+            top: 25%;
+            right: 25%;
+            animation-delay: 0.5s;
+            font-size: 1.2rem;
+        }
+
+        .star-4 {
+            top: 60%;
+            right: 12%;
+            animation-delay: 1.8s;
+            font-size: 0.9rem;
+        }
+
+        .star-5 {
+            top: 75%;
+            left: 20%;
+            animation-delay: 0.9s;
+            font-size: 1.1rem;
+        }
+
+        @keyframes twinkle {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0.8;
+                text-shadow: var(--shadow-gold);
+            }
+        }
+
+        /* =========================================
+           TYPOGRAPHY & UTILITIES
+           ========================================= */
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-heading);
+        }
+
+        .text-white {
+            color: var(--color-white);
+        }
+
+        .text-gold {
+            color: var(--color-gold);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .glow {
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+        }
+
+        /* =========================================
+           LAYOUT
+           ========================================= */
+        .app-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: calc(100vh - 40px);
+            padding: 60px 1rem 2vh 1rem;
+            max-width: 450px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+        }
+
+        .pill-badge {
+            background: rgba(15, 81, 50, 0.6);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            backdrop-filter: blur(4px);
+            color: var(--color-gold-light);
+            padding: 0.4rem 1.2rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-title {
+            font-size: clamp(2.2rem, 10vw, 3rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .greeting {
+            font-size: 1rem;
+            color: var(--color-text-dim);
+            line-height: 1.4;
+            max-width: 90%;
+        }
+
+        /* =========================================
+           MODALS (GLASSMORPHISM)
+           ========================================= */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 26, 18, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .glass-panel {
+            background: linear-gradient(145deg, rgba(20, 83, 45, 0.4) 0%, rgba(5, 46, 32, 0.7) 100%);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 28px;
+            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Modal gradient accent reflection */
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+            border-radius: 28px;
+        }
+
+        .modal-overlay.active .glass-panel {
+            transform: translateY(0) scale(1);
+        }
+
+        .glass-panel h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .glass-panel p {
+            color: var(--color-text-dim);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* =========================================
+           INPUTS & BUTTONS
+           ========================================= */
+        #login-form {
+            width: 100%;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-gold-light);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .input-group input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 16px;
+            padding: 1.2rem 1rem;
+            color: white;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(251, 191, 36, 0.15);
+        }
+
+        .btn-primary,
+        .btn-spin {
+            background: linear-gradient(to bottom, #fde047, #eab308, #ca8a04);
+            color: #451a03;
+            /* Deep amber almost brown */
+            border: none;
+            padding: 1.2rem 2rem;
+            border-radius: 999px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            font-family: var(--font-heading);
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 20px rgba(202, 138, 4, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-primary:hover:not(:disabled),
+        .btn-spin:hover:not(:disabled) {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(202, 138, 4, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.6);
+            filter: brightness(1.05);
+        }
+
+        .btn-primary:active:not(:disabled),
+        .btn-spin:active:not(:disabled) {
+            transform: translateY(1px);
+            box-shadow: 0 4px 10px rgba(202, 138, 4, 0.4);
+        }
+
+        .btn-spin:disabled {
+            background: linear-gradient(to bottom, #4b5563, #374151);
+            color: #9ca3af;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .controls {
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        /* =========================================
+           WHEEL & SPIN MECHANICS
+           ========================================= */
+        .wheel-section {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            min-height: 300px;
+            /* Important for very short screens */
+        }
+
+        /* The glowing outer container */
+        .wheel-container {
+            position: relative;
+            width: clamp(300px, 92vw, 420px);
+            height: clamp(300px, 92vw, 420px);
+            border-radius: 50%;
+            /* Layered premium glow effect */
+            box-shadow:
+                0 0 0 12px rgba(20, 83, 45, 0.4),
+                0 0 40px rgba(251, 191, 36, 0.3),
+                inset 0 0 20px rgba(0, 0, 0, 1);
+            transform: translateZ(0);
+            /* Hardware acceleration */
+        }
+
+        /* The actual spinner */
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 6px solid var(--color-gold);
+            box-shadow: inset 0 0 0 8px rgba(0, 0, 0, 0.4);
+            /* Soft gold outer border */
+            position: relative;
+            overflow: hidden;
+            /* Easing for the spin - Starts somewhat fast, spins long, ends slow */
+            transition: transform 5s cubic-bezier(0.15, 0.85, 0.15, 1);
+
+            /* Alternating Green and Gold slices generated in JS via style, 
+               but default fallback here */
+            background: conic-gradient(#052e20 0 45deg, #fbbf24 45deg 90deg, #052e20 90deg 135deg, #fbbf24 135deg 180deg, #052e20 180deg 225deg, #fbbf24 225deg 270deg, #052e20 270deg 315deg, #fbbf24 315deg 360deg);
+        }
+
+        /* Slice Texts (DOM elements injected via JS) */
+        .segment-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            /* Radius length */
+            height: 24px;
+            margin-top: -12px;
+            transform-origin: 0 50%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: clamp(20px, 6vw, 30px);
+            font-weight: 900;
+            font-size: clamp(14px, 4.5vw, 18px);
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.8);
+            -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
+            /* Stronger pop */
+            font-family: var(--font-heading);
+            letter-spacing: 0.5px;
+            line-height: 1;
+        }
+
+        .segment-text.dark {
+            color: #451a03;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+            -webkit-text-stroke: 0;
+        }
+
+        /* Image on segment */
+        .segment-img {
+            height: 40px;
+            /* Reduced slightly to fit both nicely */
+            width: auto;
+            max-width: 45%;
+            object-fit: contain;
+            filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.9));
+            transform: rotate(90deg) translateX(-5px);
+            /* Better centering */
+            margin-right: -10px;
+            /* Pull text closer */
+        }
+
+        /* Specific text styling for segments that contain an image */
+        .img-text {
+            font-size: clamp(11px, 3.5vw, 14px) !important;
+            font-weight: 900 !important;
+            text-align: right;
+            line-height: 1.1;
+            color: #451a03;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+            max-width: 50%;
+            white-space: normal;
+            /* Allow wrapping */
+            z-index: 5;
+        }
+
+        /* Top pointer */
+        .pointer {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 44px;
+            height: 55px;
+            background: linear-gradient(135deg, #fef08a, #ca8a04);
+            /* Custom pointing shape */
+            clip-path: polygon(50% 100%, 15% 15%, 85% 15%);
+            z-index: 20;
+            filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.6));
+        }
+
+        /* Accent piece connecting pointer to wheel */
+        .pointer::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--color-gold-light);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Center circle cap */
+        .wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: clamp(55px, 15vw, 75px);
+            height: clamp(55px, 15vw, 75px);
+            background: var(--color-bg-deep);
+            border: 4px solid var(--color-gold);
+            border-radius: 50%;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 1), inset 0 2px 5px rgba(255, 255, 255, 0.1);
+        }
+
+        .wheel-center-inner {
+            color: var(--color-gold);
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.8));
+            margin-left: 4px;
+            /* visually center the play icon */
+        }
+
+        /* =========================================
+           RESULT MODAL
+           ========================================= */
+        .result-modal-content {
+            background: linear-gradient(145deg, rgba(20, 83, 45, 0.85) 0%, rgba(2, 26, 18, 0.95) 100%);
+            border-color: var(--color-gold);
+            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(251, 191, 36, 0.2);
+        }
+
+        .icon-celebration {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #fde047, #ca8a04);
+            color: #451a03;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 0 25px rgba(251, 191, 36, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.5);
+            animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .prize-box {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px dashed rgba(251, 191, 36, 0.6);
+            border-radius: 20px;
+            padding: 1.5rem 1rem;
+            margin: 1.5rem 0 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Inner glow for the prize box */
+        .prize-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #prize-text {
+            font-size: clamp(1.8rem, 6vw, 2.2rem);
+            font-weight: 900;
+            color: var(--color-gold-light);
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+            font-family: var(--font-heading);
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            word-break: break-word;
+        }
+
+        /* =========================================
+           TICKER (BOTTOM)
+           ========================================= */
+        .ticker-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: rgba(5, 46, 32, 0.9);
+            border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+            backdrop-filter: blur(8px);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            z-index: 50;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .ticker-track {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 45s linear infinite;
+            /* Will-change for better performance */
+            will-change: transform;
+        }
+
+        .ticker-item {
+            color: var(--color-gold-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ticker-item span.highlight {
+            color: white;
+            font-weight: 700;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+
+            /* We duplicate the inner content so -50% creates a seamless loop */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Lebaran Background Music -->
+    <audio id="bg-music" loop preload="auto">
+        <!-- Direct URL to a royalty-free Islamic/Ramadan music track -->
+        <source
+            src="https://cdn.pixabay.com/download/audio/2023/03/17/audio_c3e66085a2.mp3?filename=ramadan-mubarak-142823.mp3"
+            type="audio/mpeg">
+        <source src="lebaran.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Abstract Background Decorations -->
+    <div class="background-decorations">
+        <!-- Glowing background orbs -->
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+
+        <!-- Animated Crescent Moon and Stars -->
+        <div class="moon"></div>
+        <div class="star star-1">🕌</div>
+        <div class="star star-2">🌙</div>
+        <div class="star star-3">✨</div>
+        <div class="star star-4">🕋</div>
+        <div class="star star-5">🌟</div>
+    </div>
+
+    <!-- 1. ENTRY MODAL -->
+    <div id="entry-modal" class="modal-overlay active">
+        <div class="modal glass-panel">
+            <h2 class="text-gold">Selamat Datang!</h2>
+            <p>Silakan masukkan nama Anda untuk mulai memutar keberuntungan dikesempatan Lebaran ini.</p>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Masukkan nama..." autocomplete="off" required>
+                </div>
+                <!-- Prevent form submission from reloading page -->
+                <button type="submit" id="btn-enter" class="btn-primary">MASUK & PUTAR</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. MAIN APP CONTENT -->
+    <main class="app-container">
+        <header>
+            <div class="pill-badge">Spesial Idul Fitri 1447 H</div>
+            <h1 class="main-title"><span class="text-white">BONUS</span> <span class="text-gold glow">LEBARAN</span>
+            </h1>
+            <p class="greeting" id="greeting-text">Kemeriahan Kemenangan Fitri, Putar Roda Rezekimu Sekarang!</p>
+        </header>
+
+        <!-- The Spinning Wheel Section -->
+        <section class="wheel-section">
+            <div class="wheel-container">
+                <!-- The Pointer (Static) -->
+                <div class="pointer"></div>
+                <!-- The Wheel (Spins) -->
+                <div class="wheel" id="wheel">
+                    <!-- Segments generated via JavaScript -->
+                </div>
+                <!-- Center Cap -->
+                <div class="wheel-center">
+                    <div class="wheel-center-inner">▶</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spin Controls -->
+        <div class="controls">
+            <button id="btn-spin" class="btn-spin" disabled>PUTAR SEKARANG</button>
+        </div>
+    </main>
+
+    <!-- Ticker / Running Text at Bottom -->
+    <div class="ticker-container">
+        <div class="ticker-track" id="ticker-track">
+            <!-- Ticker items generated via JavaScript -->
+        </div>
+    </div>
+
+    <!-- 3. RESULT MODAL -->
+    <div id="result-modal" class="modal-overlay">
+        <div class="modal glass-panel result-modal-content">
+            <div class="icon-celebration">✨</div>
+            <h2 class="text-gold">SELAMAT!</h2>
+            <p>Kamu beruntung memenangkan hadiah spesial di hari ini:</p>
+            <div class="prize-box">
+                <span id="prize-text">IPHONE 17 PROMAX</span>
+            </div>
+            <p
+                style="color: #fef08a; font-weight: 800; text-transform: uppercase; font-size: 0.85rem; border: 1px dashed rgba(251, 191, 36, 0.5); padding: 0.8rem; border-radius: 10px; background: rgba(0,0,0,0.4); margin-bottom: 1.5rem; letter-spacing: 0.5px; text-align: center; line-height: 1.4;">
+                ⚠️ SCREENSHOT HADIAH INI DAN KIRIMKAN <br> KE ADMIN SEKARANG JUGA!
+            </p>
+            <button id="btn-claim" class="btn-primary">AMBIL BONUSNYA</button>
+        </div>
+    </div>
+    <script>
+        eval(decodeURIComponent(escape(window.atob('LyoqDQogKiBMZWJhcmFuIFNwaW4gLSBDb3JlIExvZ2ljDQogKi8NCg0KLy8gLS0tIDEuIENPTkZJR1VSQVRJT04gLS0tDQpjb25zdCBHT09HTEVfU0hFRVRfU0NSSVBUX1VSTCA9ICdodHRwczovL3NjcmlwdC5nb29nbGUuY29tL21hY3Jvcy9zL0FLZnljYnlGamxCem5FSHV5cVJhS2pTR3NlNEF2djIxaHdOS0prZ1hNZmU1dEVKdXlhREdUWEhVeVh5Zm5FTHRpRlFfMmZPVC9leGVjJzsNCg0KY29uc3QgU0VHTUVOVFMgPSBbDQogICAgeyBsYWJlbDogJzIwMHJiJywgYmc6ICcjMDUyZTIwJywgY29sb3I6ICd3aGl0ZScgfSwNCiAgICB7IGxhYmVsOiAnNDAwcmInLCBiZzogJyNmYmJmMjQnLCBjb2xvcjogJ2RhcmsnIH0sDQogICAgeyBsYWJlbDogJzYwMHJiJywgYmc6ICcjMDUyZTIwJywgY29sb3I6ICd3aGl0ZScgfSwNCiAgICB7IGxhYmVsOiAnODAwcmInLCBiZzogJyNmYmJmMjQnLCBjb2xvcjogJ2RhcmsnIH0sDQogICAgeyBsYWJlbDogJzEgSnV0YScsIGJnOiAnIzA1MmUyMCcsIGNvbG9yOiAnd2hpdGUnIH0sDQogICAgeyBsYWJlbDogJ0lQSE9ORSAxNyBQUk9NQVgnLCBiZzogJyNmYmJmMjQnLCBjb2xvcjogJ2RhcmsnLCBpbWc6ICdodHRwczovL2Nkbi5td2F2ZS5jb20uYXUvaW1hZ2VzLzQwMC9hcHBsZV9pcGhvbmVfMTdfcHJvX21heF8yNTZnYl9jb3NtaWNfb3JhbmdlX2FjODkzNDdfNjc4NDMuanBnJyB9LA0KICAgIHsgbGFiZWw6ICdFbWFzIDEwZ3JhbScsIGJnOiAnIzA1MmUyMCcsIGNvbG9yOiAnd2hpdGUnIH0sDQogICAgeyBsYWJlbDogJzEwMHJiJywgYmc6ICcjZmJiZjI0JywgY29sb3I6ICdkYXJrJyB9LA0KXTsNCg0KY29uc3QgU1BJTl9EVVJBVElPTl9NUyA9IDUwMDA7DQpjb25zdCBNSU5fU1BJTlMgPSA1Ow0KY29uc3QgTUFYX1NQSU5TID0gMTA7DQoNCi8vIC0tLSAyLiBET00gRUxFTUVOVFMgLS0tDQpjb25zdCB3aGVlbCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd3aGVlbCcpOw0KY29uc3QgYnRuU3BpbiA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdidG4tc3BpbicpOw0KY29uc3QgYnRuRW50ZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYnRuLWVudGVyJyk7DQpjb25zdCBidG5DbGFpbSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdidG4tY2xhaW0nKTsNCg0KY29uc3QgbG9naW5Gb3JtID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2xvZ2luLWZvcm0nKTsNCmNvbnN0IHVzZXJuYW1lSW5wdXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgndXNlcm5hbWUnKTsNCmNvbnN0IGdyZWV0aW5nVGV4dCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdncmVldGluZy10ZXh0Jyk7DQpjb25zdCBwcml6ZVRleHQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncHJpemUtdGV4dCcpOw0KDQpjb25zdCBlbnRyeU1vZGFsID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2VudHJ5LW1vZGFsJyk7DQpjb25zdCByZXN1bHRNb2RhbCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdyZXN1bHQtbW9kYWwnKTsNCmNvbnN0IHRpY2tlclRyYWNrID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RpY2tlci10cmFjaycpOw0KDQpjb25zdCBiZ011c2ljID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2JnLW11c2ljJyk7DQoNCi8vIC0tLSAzLiBTVEFURSAtLS0NCmxldCBjdXJyZW50Um90YXRpb24gPSAwOw0KbGV0IGlzU3Bpbm5pbmcgPSBmYWxzZTsNCmxldCB1c2VyTmFtZSA9ICcnOw0KbGV0IGlzQXVkaW9QbGF5aW5nID0gZmFsc2U7DQoNCi8vIC0tLSA0LiBJTklUSUFMSVpBVElPTiAtLS0NCg0KLy8gQ29uc3RydWN0IHRoZSBXaGVlbCBkeW5hbWljYWxseSBiYXNlZCBvbiBTRUdNRU5UUyBhcnJheQ0KZnVuY3Rpb24gYnVpbGRXaGVlbCgpIHsNCiAgICBjb25zdCBudW1TZWdtZW50cyA9IFNFR01FTlRTLmxlbmd0aDsNCiAgICBjb25zdCBhbmdsZVBlclNlZ21lbnQgPSAzNjAgLyBudW1TZWdtZW50czsNCg0KICAgIC8vIDEuIEJ1aWxkIHRoZSBDb25pYyBHcmFkaWVudCBzdHJpbmcgZm9yIENTUyBiYWNrZ3JvdW5kDQogICAgbGV0IGdyYWRpZW50UGFydHMgPSBbXTsNCiAgICBmb3IgKGxldCBpID0gMDsgaSA8IG51bVNlZ21lbnRzOyBpKyspIHsNCiAgICAgICAgY29uc3Qgc3RhcnRBbmcgPSBpICogYW5nbGVQZXJTZWdtZW50Ow0KICAgICAgICBjb25zdCBlbmRBbmcgPSAoaSArIDEpICogYW5nbGVQZXJTZWdtZW50Ow0KICAgICAgICBncmFkaWVudFBhcnRzLnB1c2goYCR7U0VHTUVOVFNbaV0uYmd9ICR7c3RhcnRBbmd9ZGVnICR7ZW5kQW5nfWRlZ2ApOw0KICAgIH0NCiAgICB3aGVlbC5zdHlsZS5iYWNrZ3JvdW5kID0gYGNvbmljLWdyYWRpZW50KCR7Z3JhZGllbnRQYXJ0cy5qb2luKCcsICcpfSlgOw0KDQogICAgLy8gMi4gSW5qZWN0IHRleHQgbm9kZXMNCiAgICBTRUdNRU5UUy5mb3JFYWNoKChzZWdtZW50LCBpbmRleCkgPT4gew0KICAgICAgICBjb25zdCBlbCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpOw0KICAgICAgICBlbC5jbGFzc0xpc3QuYWRkKCdzZWdtZW50LXRleHQnKTsNCiAgICAgICAgaWYgKHNlZ21lbnQuY29sb3IgPT09ICdkYXJrJykgZWwuY2xhc3NMaXN0LmFkZCgnZGFyaycpOw0KDQogICAgICAgIC8vIENTUyBjb25pYyBncmFkaWVudCBzdGFydHMgZnJvbSBUb3AgKDEyIG8nY2xvY2ssIDBkZWcpIGdvaW5nIGNsb2Nrd2lzZS4NCiAgICAgICAgLy8gRWxlbWVudCdzIERPTSBvcmlnaW4gaXMgYXQgNTAlIDUwJS4gV2l0aCByb3RhdGUoMGRlZyksIHRleHQgcG9pbnRzIHRvIDMgbydjbG9jayBuYXRpdmVseS4NCiAgICAgICAgLy8gVG8gYWxpZ24gdGV4dCBwb2ludGluZyBmcm9tIGNlbnRlciB0byB0aGUgbWlkZGxlIG9mIHRoZSBzZWdtZW50IGJvdW5kYXJpZXM6DQogICAgICAgIC8vIGFuZ2xlIChmcm9tIHRvcCkgPSBpbmRleCAqIGFuZ2xlUGVyU2VnbWVudCArIChhbmdsZVBlclNlZ21lbnQgLyAyKQ0KICAgICAgICAvLyBTaW5jZSAwZGVnIGluIENTUyB0cmFuc2Zvcm0gaXMgMyBvJ2Nsb2NrLCB3ZSBzdWJ0cmFjdCA5MGRlZyB0byBtYXAgMTIgLT4gMC4NCiAgICAgICAgY29uc3Qgcm90YXRpb25BbmdsZSA9IChpbmRleCAqIGFuZ2xlUGVyU2VnbWVudCkgKyAoYW5nbGVQZXJTZWdtZW50IC8gMikgLSA5MDsNCg0KICAgICAgICBlbC5zdHlsZS50cmFuc2Zvcm0gPSBgcm90YXRlKCR7cm90YXRpb25BbmdsZX1kZWcpYDsNCg0KICAgICAgICBpZiAoc2VnbWVudC5pbWcpIHsNCiAgICAgICAgICAgIGVsLmlubmVySFRNTCA9IGA8aW1nIHNyYz0iJHtzZWdtZW50LmltZ30iIGNsYXNzPSJzZWdtZW50LWltZyIgYWx0PSIke3NlZ21lbnQubGFiZWx9Ij48c3BhbiBjbGFzcz0iaW1nLXRleHQiPiR7c2VnbWVudC5sYWJlbH08L3NwYW4+YDsNCiAgICAgICAgICAgIGVsLnN0eWxlLmp1c3RpZnlDb250ZW50ID0gJ2ZsZXgtZW5kJzsgLy8gS2VlcCBpdCBhdCB0aGUgZWRnZQ0KICAgICAgICB9IGVsc2Ugew0KICAgICAgICAgICAgZWwuaW5uZXJIVE1MID0gYDxzcGFuPiR7c2VnbWVudC5sYWJlbH08L3NwYW4+YDsNCiAgICAgICAgfQ0KDQogICAgICAgIHdoZWVsLmFwcGVuZENoaWxkKGVsKTsNCiAgICB9KTsNCn0NCg0KLy8gQ29uc3RydWN0IHRoZSBpbmZpbml0ZSB0aWNrZXIgYXQgdGhlIGJvdHRvbQ0KZnVuY3Rpb24gYnVpbGRUaWNrZXIoKSB7DQogICAgY29uc3QgZmFrZVdpbm5lcnMgPSBbDQogICAgICAgICLwn46JIEJ1ZGkqKiogbWVtZW5hbmdrYW4gODAwcmIhIiwNCiAgICAgICAgIuKcqCBTaXRpKioqIG1lbmRhcGF0a2FuIEVtYXMgMTBnISIsDQogICAgICAgICLwn46KIEFndXMqKiogbWVtZW5hbmdrYW4gSVBIT05FIDE3IFBST01BWCEiLA0KICAgICAgICAi8J+OiSBSaW5hKioqIG1lbWVuYW5na2FuIDYwMHJiISIsDQogICAgICAgICLinKggSm9rbyoqKiBtZW5kYXBhdGthbiAxIEp1dGEhIiwNCiAgICAgICAgIvCfjoogV2FoeXUqKiogbWVtZW5hbmdrYW4gMjAwcmIhIiwNCiAgICAgICAgIvCfjokgRWthKioqIG1lbmRhcGF0a2FuIDQwMHJiISIsDQogICAgICAgICLinKggUHV0cmEqKiogbWVtZW5hbmdrYW4gSVBIT05FIDE3IFBST01BWCEiLA0KICAgICAgICAi8J+OiiBEZXdpKioqIG1lbmRhcGF0a2FuIEVtYXMgMTBncmFtISIsDQogICAgICAgICLwn46JIEFuZHJlKioqIG1lbWVuYW5na2FuIDgwMHJiISIsDQogICAgICAgICLinKggTWF5YSoqKiBtZW5kYXBhdGthbiAxMDByYiEiLA0KICAgICAgICAi8J+OiiBJbGhhbSoqKiBtZW1lbmFuZ2thbiAxIEp1dGEhIg0KICAgIF07DQoNCiAgICAvLyBEdXBsaWNhdGVkIHR3aWNlIHRvIGVuc3VyZSBzZWFtbGVzcyBzY3JvbGxpbmcgYW5pbWF0aW9uDQogICAgY29uc3QgY29tcGxldGVUaWNrZXJDb250ZW50ID0gWy4uLmZha2VXaW5uZXJzLCAuLi5mYWtlV2lubmVycywgLi4uZmFrZVdpbm5lcnNdLmpvaW4oJyA8c3BhbiBzdHlsZT0ibWFyZ2luOiAwIDFyZW07IGNvbG9yOiByZ2JhKDI1MSwxOTEsMzYsMC41KSI+8J+Mnzwvc3Bhbj4gJyk7DQoNCiAgICAvLyBXcmFwIGluIHR3byBzaWRlLWJ5LXNpZGUgZWxlbWVudHMgZm9yIGhhcmR3YXJlLWFjY2VsZXJhdGVkIHNlYW1sZXNzIGxvb3BpbmcNCiAgICB0aWNrZXJUcmFjay5pbm5lckhUTUwgPSBgDQogICAgICAgIDxkaXYgc3R5bGU9ImRpc3BsYXk6aW5saW5lLWZsZXg7IGFsaWduLWl0ZW1zOmNlbnRlcjsgcGFkZGluZy1sZWZ0OiAxMDB2dzsiPiR7Y29tcGxldGVUaWNrZXJDb250ZW50fTwvZGl2Pg0KICAgICAgICA8ZGl2IHN0eWxlPSJkaXNwbGF5OmlubGluZS1mbGV4OyBhbGlnbi1pdGVtczpjZW50ZXI7IHBhZGRpbmctbGVmdDogMnJlbTsiPiR7Y29tcGxldGVUaWNrZXJDb250ZW50fTwvZGl2Pg0KICAgIGA7DQp9DQoNCi8vIC0tLSA1LiBFVkVOVCBIQU5ETEVSUyAtLS0NCg0KZnVuY3Rpb24gcGxheUF1ZGlvKCkgew0KICAgIGlmICghaXNBdWRpb1BsYXlpbmcgJiYgYmdNdXNpYykgew0KICAgICAgICBiZ011c2ljLnZvbHVtZSA9IDAuNTsgLy8gQ29tZm9ydGFibGUgdm9sdW1lDQogICAgICAgIGJnTXVzaWMucGxheSgpLmNhdGNoKGUgPT4gY29uc29sZS5sb2coJ0F1ZGlvIGF1dG9wbGF5IGJsb2NrZWQnLCBlKSk7DQogICAgICAgIGlzQXVkaW9QbGF5aW5nID0gdHJ1ZTsNCiAgICB9DQp9DQoNCi8vIExvZ2luIFN1Ym1pdA0KbG9naW5Gb3JtLmFkZEV2ZW50TGlzdGVuZXIoJ3N1Ym1pdCcsIChlKSA9PiB7DQogICAgZS5wcmV2ZW50RGVmYXVsdCgpOyAvLyBQcmV2ZW50IHBhZ2UgcmVsb2FkDQogICAgcGxheUF1ZGlvKCk7IC8vIFBsYXkgbXVzaWMgb24gZmlyc3QgaW50ZXJhY3Rpb24NCiAgICBjb25zdCBuYW1lID0gdXNlcm5hbWVJbnB1dC52YWx1ZS50cmltKCk7DQogICAgaWYgKG5hbWUpIHsNCiAgICAgICAgdXNlck5hbWUgPSBuYW1lOw0KICAgICAgICBncmVldGluZ1RleHQudGV4dENvbnRlbnQgPSBgSGFsbyAke3VzZXJOYW1lfSwgS2VtZXJpYWhhbiBLZW1lbmFuZ2FuIEZpdHJpLCBQdXRhciBSb2RhIFJlemVraW11IFNla2FyYW5nIWA7DQogICAgICAgIGVudHJ5TW9kYWwuY2xhc3NMaXN0LnJlbW92ZSgnYWN0aXZlJyk7DQogICAgICAgIGJ0blNwaW4uZGlzYWJsZWQgPSBmYWxzZTsNCiAgICB9DQp9KTsNCg0KLy8gU3BpbiBBY3Rpb24NCmJ0blNwaW4uYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCAoKSA9PiB7DQogICAgaWYgKGlzU3Bpbm5pbmcpIHJldHVybjsNCg0KICAgIGlzU3Bpbm5pbmcgPSB0cnVlOw0KICAgIGJ0blNwaW4uZGlzYWJsZWQgPSB0cnVlOw0KICAgIGJ0blNwaW4udGV4dENvbnRlbnQgPSAnTUVNVVRBUi4uLic7DQoNCiAgICAvLyBEZXRlcm1pbmUgcmFuZG9tIHNwaW5zDQogICAgY29uc3QgZnVsbFNwaW5zID0gTWF0aC5mbG9vcihNYXRoLnJhbmRvbSgpICogKE1BWF9TUElOUyAtIE1JTl9TUElOUyArIDEpKSArIE1JTl9TUElOUzsNCg0KICAgIC8vIC0tLSBSSUdHSU5HIExPR0lDIC0tLQ0KICAgIC8vIFdlIHdhbnQgdG8gZ2VuZXJhdGUgYW4gYW5nbGUgdGhhdCBzcGVjaWZpY2FsbHkgQVZPSURTIHRoZSAnSVBIT05FIDE3IFBST01BWCcgYW5kICdFbWFzIDEwZ3JhbScgc2VnbWVudHMuDQogICAgLy8gSW5kZXggNSBpcyBpUGhvbmUsIEluZGV4IDYgaXMgRW1hcy4gDQogICAgLy8gV2Ugd2lsbCBwaWNrIGEgcmFuZG9tICJzYWZlIiBpbmRleCwgYW5kIGNhbGN1bGF0ZSB0aGUgZGVncmVlcyB0byBsYW5kIGV4YWN0bHkgaW4gdGhlIG1pZGRsZSBvZiBpdC4NCg0KICAgIGNvbnN0IHNhZmVJbmRpY2VzID0gWzAsIDEsIDIsIDMsIDQsIDddOyAvLyBFdmVyeXRoaW5nIGV4Y2VwdCA1IGFuZCA2DQogICAgY29uc3QgY2hvc2VuU2FmZUluZGV4ID0gc2FmZUluZGljZXNbTWF0aC5mbG9vcihNYXRoLnJhbmRvbSgpICogc2FmZUluZGljZXMubGVuZ3RoKV07DQoNCiAgICBjb25zdCBhbmdsZVBlclNlZ21lbnQgPSAzNjAgLyBTRUdNRU5UUy5sZW5ndGg7DQogICAgLy8gVG8gbGFuZCBvbiBhIHNwZWNpZmljIGluZGV4LCB0aGF0IHNlZ21lbnQgbmVlZHMgdG8gZW5kIHVwIGF0IHRoZSAwIGRlZ3JlZSAoMTIgbydjbG9jaykgcG9zaXRpb24uDQogICAgLy8gSWYgdGhlIGFuZ2xlIGlzIFgsIGFuZCB3ZSByb3RhdGUgdGhlIHdoZWVsIGNsb2Nrd2lzZSBieSAoMzYwIC0gWCksIGl0IGxhbmRzIGF0IDAuDQogICAgLy8gU28gdGhlIHRhcmdldCByb3RhdGlvbiB0byBwdXQgYSBzZWdtZW50IGF0IDEyIG8nY2xvY2sgaXMgcm91Z2hseSAoMzYwIC0gKGluZGV4ICogYW5nbGVQZXJTZWdtZW50KSkNCiAgICAvLyBXZSBhZGQgaGFsZiBhIHNlZ21lbnQgYW5nbGUgc28gdGhlIHBvaW50ZXIgbGFuZHMgcmlnaHQgaW4gdGhlIG1pZGRsZSBvZiB0aGUgc2xpY2UuDQoNCiAgICBsZXQgdGFyZ2V0RGVncmVlRm9yU2xpY2UgPSAzNjAgLSAoY2hvc2VuU2FmZUluZGV4ICogYW5nbGVQZXJTZWdtZW50KSAtIChhbmdsZVBlclNlZ21lbnQgLyAyKTsNCiAgICAvLyBFbnN1cmUgcG9zaXRpdmUgYW5nbGUNCiAgICBpZiAodGFyZ2V0RGVncmVlRm9yU2xpY2UgPCAwKSB0YXJnZXREZWdyZWVGb3JTbGljZSArPSAzNjA7DQoNCiAgICAvLyBleHRyYURlZ3JlZXMgaXMgZXNzZW50aWFsbHkgbG9ja2luZyBvbnRvIHRoZSBtaWRkbGUgb2Ygb3VyIGNob3NlbiBzYWZlIHNlZ21lbnQNCiAgICBjb25zdCBleHRyYURlZ3JlZXMgPSB0YXJnZXREZWdyZWVGb3JTbGljZTsNCg0KICAgIC8vIFdlIGFkZCB0byBjdXJyZW50IHJvdGF0aW9uIHNvIGl0IG5ldmVyIHJldmVyc2VzLCBieSBzbmFwcGluZyB0byB0aGUgbmV4dCBmdWxsIHJvdGF0aW9uDQogICAgLy8gQ2FsY3VsYXRlIGhvdyBtYW55IGRlZ3JlZXMgZnJvbSBjdXJyZW50Um90YXRpb24gdG8gdGhlIG5leHQgcHVyZSAwLWRlZ3JlZSBwb2ludA0KICAgIGNvbnN0IHJlbWFpbmRlciA9IGN1cnJlbnRSb3RhdGlvbiAlIDM2MDsNCiAgICBjb25zdCBiYXNlUm90YXRpb25Ub1plcm8gPSBjdXJyZW50Um90YXRpb24gKyAoMzYwIC0gcmVtYWluZGVyKTsNCg0KICAgIGN1cnJlbnRSb3RhdGlvbiA9IGJhc2VSb3RhdGlvblRvWmVybyArIChmdWxsU3BpbnMgKiAzNjApICsgZXh0cmFEZWdyZWVzOw0KDQogICAgLy8gQXBwbHkgdHJhbnNmb3JtYXRpb24NCiAgICB3aGVlbC5zdHlsZS50cmFuc2Zvcm0gPSBgcm90YXRlKCR7Y3VycmVudFJvdGF0aW9ufWRlZylgOw0KDQogICAgLy8gV2FpdCBmb3IgYW5pbWF0aW9uIHRvIGZpbmlzaA0KICAgIHNldFRpbWVvdXQoKCkgPT4gew0KICAgICAgICBpc1NwaW5uaW5nID0gZmFsc2U7DQogICAgICAgIGJ0blNwaW4udGV4dENvbnRlbnQgPSAnUFVUQVIgU0VLQVJBTkcnOw0KDQogICAgICAgIGRldGVybWluZVdpbm5lcihjdXJyZW50Um90YXRpb24pOw0KICAgIH0sIFNQSU5fRFVSQVRJT05fTVMpOw0KfSk7DQoNCi8vIENsYWltIFByaXplIEFjdGlvbg0KYnRuQ2xhaW0uYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCAoKSA9PiB7DQogICAgYnRuQ2xhaW0uZGlzYWJsZWQgPSB0cnVlOw0KICAgIGJ0bkNsYWltLnRleHRDb250ZW50ID0gJ01FTkdJUklNLi4uJzsNCg0KICAgIC8vIFNpYXBrYW4gZGF0YSB5YW5nIGFrYW4gZGlraXJpbSBrZSBHb29nbGUgU2hlZXRzDQogICAgY29uc3QgZm9ybURhdGEgPSBuZXcgRm9ybURhdGEoKTsNCiAgICBmb3JtRGF0YS5hcHBlbmQoJ3dha3R1JywgbmV3IERhdGUoKS50b0xvY2FsZVN0cmluZygnaWQtSUQnKSk7DQogICAgZm9ybURhdGEuYXBwZW5kKCd1c2VybmFtZScsIHVzZXJOYW1lKTsNCiAgICBmb3JtRGF0YS5hcHBlbmQoJ2hhZGlhaCcsIHByaXplVGV4dC50ZXh0Q29udGVudCk7DQoNCiAgICBpZiAoR09PR0xFX1NIRUVUX1NDUklQVF9VUkwgJiYgR09PR0xFX1NIRUVUX1NDUklQVF9VUkwgIT09ICdVUkxfV0VCX0FQUF9HT09HTEVfU0NSSVBUX0RJU0lOSScpIHsNCiAgICAgICAgLy8gS2lyaW0gZGF0YSBrZSBHb29nbGUgU2hlZXRzDQogICAgICAgIGZldGNoKEdPT0dMRV9TSEVFVF9TQ1JJUFRfVVJMLCB7DQogICAgICAgICAgICBtZXRob2Q6ICdQT1NUJywNCiAgICAgICAgICAgIGJvZHk6IGZvcm1EYXRhLA0KICAgICAgICAgICAgbW9kZTogJ25vLWNvcnMnIC8vIFBlbnRpbmcgdW50dWsgR29vZ2xlIEFwcHMgU2NyaXB0IGFnYXIgdGlkYWsgZXJyb3IgQ09SUyBkaSBicm93c2VyDQogICAgICAgIH0pDQogICAgICAgICAgICAudGhlbigoKSA9PiB7DQogICAgICAgICAgICAgICAgcmVzdWx0TW9kYWwuY2xhc3NMaXN0LnJlbW92ZSgnYWN0aXZlJyk7DQogICAgICAgICAgICAgICAgYnRuU3Bpbi5kaXNhYmxlZCA9IGZhbHNlOw0KICAgICAgICAgICAgICAgIHdpbmRvdy5sb2NhdGlvbi5ocmVmID0gImh0dHBzOi8vc2hvcnRoZS5saW5rL2tpc2Foc2xvdCI7DQogICAgICAgICAgICB9KQ0KICAgICAgICAgICAgLmNhdGNoKGVycm9yID0+IHsNCiAgICAgICAgICAgICAgICBjb25zb2xlLmVycm9yKCdHYWdhbCBtZW5naXJpbSBkYXRhOicsIGVycm9yKTsNCiAgICAgICAgICAgICAgICByZXN1bHRNb2RhbC5jbGFzc0xpc3QucmVtb3ZlKCdhY3RpdmUnKTsNCiAgICAgICAgICAgICAgICB3aW5kb3cubG9jYXRpb24uaHJlZiA9ICJodHRwczovL3Nob3J0aGUubGluay9raXNhaHNsb3QiOw0KICAgICAgICAgICAgfSk7DQogICAgfSBlbHNlIHsNCiAgICAgICAgLy8gSmlrYSBVUkwgYmVsdW0gZGlhdHVyLCBsYW5nc3VuZyBhbGloa2FuDQogICAgICAgIHJlc3VsdE1vZGFsLmNsYXNzTGlzdC5yZW1vdmUoJ2FjdGl2ZScpOw0KICAgICAgICBidG5TcGluLmRpc2FibGVkID0gZmFsc2U7DQogICAgICAgIHdpbmRvdy5sb2NhdGlvbi5ocmVmID0gImh0dHBzOi8vc2hvcnRoZS5saW5rL2tpc2Foc2xvdCI7DQogICAgfQ0KfSk7DQoNCi8vIC0tLSA2LiBMT0dJQyAtLS0NCg0KZnVuY3Rpb24gZGV0ZXJtaW5lV2lubmVyKGRlZykgew0KICAgIC8vIEN1cnJlbnQgUm90YXRpb24gbWFwcyBleGFjdGx5IHRvIENTUyBiYWNrZ3JvdW5kIGdyYWRpZW50IHJvdGF0aW9uIGNsb2Nrd2lzZS4NCiAgICAvLyBUaGUgcG9pbnRlciBpcyBmaXhlZCBhdCAxMiBvJ2Nsb2NrICgwIGRlZ3JlZXMpLg0KICAgIC8vIElmIHRoZSB3aGVlbCB0dXJucyBYIGRlZ3JlZXMgY2xvY2t3aXNlLCB0aGUgcG9pbnQgdGhhdCBub3cgc2l0cyBhdCAxMiBvJ2Nsb2NrDQogICAgLy8gd2FzIG9yaWdpbmFsbHkgbG9jYXRlZCBYIGRlZ3JlZXMgQkVGT1JFIDEyIG8nY2xvY2sgKGkuZS4gQ291bnRlci1DbG9ja3dpc2UpLg0KDQogICAgLy8gTm9ybWFsaXplIHRvIDAtMzU5DQogICAgY29uc3Qgbm9ybWFsaXplZERlZyA9IGRlZyAlIDM2MDsNCg0KICAgIC8vIENhbGN1bGF0ZSB3aGF0IGFuZ2xlIHdhcyBvcmlnaW5hbGx5IGF0IHRoZSB0b3ANCiAgICBjb25zdCBhbmdsZUF0UG9pbnRlciA9ICgzNjAgLSBub3JtYWxpemVkRGVnKSAlIDM2MDsNCg0KICAgIGNvbnN0IGFuZ2xlUGVyU2VnbWVudCA9IDM2MCAvIFNFR01FTlRTLmxlbmd0aDsNCiAgICBjb25zdCBzZWdtZW50SW5kZXggPSBNYXRoLmZsb29yKGFuZ2xlQXRQb2ludGVyIC8gYW5nbGVQZXJTZWdtZW50KTsNCiAgICBjb25zdCB3aW5uZXIgPSBTRUdNRU5UU1tzZWdtZW50SW5kZXhdOw0KDQogICAgc2hvd1Jlc3VsdCh3aW5uZXIubGFiZWwpOw0KfQ0KDQpmdW5jdGlvbiBzaG93UmVzdWx0KHByaXplKSB7DQogICAgcHJpemVUZXh0LmlubmVySFRNTCA9IHByaXplOw0KICAgIHJlc3VsdE1vZGFsLmNsYXNzTGlzdC5hZGQoJ2FjdGl2ZScpOw0KDQogICAgLy8gQWx3YXlzIGNlbGVicmF0ZSBzaW5jZSBubyAnQ29iYSBMYWdpJw0KICAgIGZpcmVDb25mZXR0aSgpOw0KfQ0KDQovLyBGaXJlIENhbnZhcyBDb25mZXR0aSB2aWEgdGhlIGltcG9ydGVkIENETiBsaWJyYXJ5DQpmdW5jdGlvbiBmaXJlQ29uZmV0dGkoKSB7DQogICAgY29uc3QgZHVyYXRpb24gPSAzICogMTAwMDsNCiAgICBjb25zdCBhbmltYXRpb25FbmQgPSBEYXRlLm5vdygpICsgZHVyYXRpb247DQoNCiAgICBjb25zdCBjb2xvcnMgPSBbJyNmYmJmMjQnLCAnI2ZlZjA4YScsICcjMTBiOTgxJywgJyMwNTJlMjAnXTsNCg0KICAgIChmdW5jdGlvbiBmcmFtZSgpIHsNCiAgICAgICAgY29uc3QgdGltZUxlZnQgPSBhbmltYXRpb25FbmQgLSBEYXRlLm5vdygpOw0KDQogICAgICAgIGlmICh0aW1lTGVmdCA8PSAwKSByZXR1cm47DQoNCiAgICAgICAgY29uc3QgcGFydGljbGVDb3VudCA9IDUwICogKHRpbWVMZWZ0IC8gZHVyYXRpb24pOw0KDQogICAgICAgIC8vIFRocm93IGZyb20gbGVmdA0KICAgICAgICBjb25mZXR0aSh7DQogICAgICAgICAgICBwYXJ0aWNsZUNvdW50LA0KICAgICAgICAgICAgYW5nbGU6IDYwLA0KICAgICAgICAgICAgc3ByZWFkOiA1NSwNCiAgICAgICAgICAgIG9yaWdpbjogeyB4OiAwIH0sDQogICAgICAgICAgICBjb2xvcnM6IGNvbG9ycywNCiAgICAgICAgICAgIHpJbmRleDogMTAwMA0KICAgICAgICB9KTsNCg0KICAgICAgICAvLyBUaHJvdyBmcm9tIHJpZ2h0DQogICAgICAgIGNvbmZldHRpKHsNCiAgICAgICAgICAgIHBhcnRpY2xlQ291bnQsDQogICAgICAgICAgICBhbmdsZTogMTIwLA0KICAgICAgICAgICAgc3ByZWFkOiA1NSwNCiAgICAgICAgICAgIG9yaWdpbjogeyB4OiAxIH0sDQogICAgICAgICAgICBjb2xvcnM6IGNvbG9ycywNCiAgICAgICAgICAgIHpJbmRleDogMTAwMA0KICAgICAgICB9KTsNCg0KICAgICAgICByZXF1ZXN0QW5pbWF0aW9uRnJhbWUoZnJhbWUpOw0KICAgIH0oKSk7DQp9DQoNCi8vIC0tLSBJTklUIC0tLQ0KYnVpbGRXaGVlbCgpOw0KYnVpbGRUaWNrZXIoKTsNCg=='))));
+        document.addEventListener('contextmenu', event => event.preventDefault()); document.onkeydown = function (e) { if (e.keyCode == 123) { return false; } if (e.ctrlKey && e.shiftKey && e.keyCode == 73) { return false; } if (e.ctrlKey && e.shiftKey && e.keyCode == 67) { return false; } if (e.ctrlKey && e.shiftKey && e.keyCode == 74) { return false; } if (e.ctrlKey && e.keyCode == 85) { return false; } };
+    </script>
+</body>
+
+</html>
